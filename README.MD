@@ -1,8 +1,8 @@
 # Nabi Ajax Filters
-Tags: ajax, filter, posts, pagination
-Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 1.0
+Tags: ajax, filter, posts, pagination<br>
+Requires at least: 4.0<br>
+Tested up to: 4.9.8<br>
+Stable tag: 1.0.1
 
 A WordPress Plugin allowing to filter posts by taxonomies and add a dynamic pagination.
 
@@ -40,5 +40,8 @@ Else, to install manually:
 
 ## Changelog
 
-= 1.0 =
+** 1.0.1 **
+* Pagination parameter bug fix.
+
+** 1.0 **
 * Version 1.

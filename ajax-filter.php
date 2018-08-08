@@ -3,7 +3,7 @@
 Plugin Name: Nabi Ajax Filter
 Plugin URI: https://www.agencenabi.com
 Description: Filter custom posts with Ajax
-Version: 1.0
+Version: 1.0.1
 Author: Marc-André Lavigne
 Author URI: https://www.agencenabi.com
 License: GPL2
