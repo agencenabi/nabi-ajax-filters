@@ -126,35 +126,33 @@ class NabiFilter_elements{
                 $ajaxPostfilter = new WP_Query();
                 $ajaxPostfilter->query($args);
                 if(in_array("top",$paginationDisplay))
-                    $this->pageination($ajaxPostfilter->found_posts, $postPerPage);
+                    $this->pagination($ajaxPostfilter->found_posts, $postPerPage);
                 if($ajaxPostfilter->have_posts()): while ($ajaxPostfilter->have_posts()) : $ajaxPostfilter->the_post(); ?>
                     <?php $i++; ?>
 
-
-						<div class="nbf-post__brick">
-							<div class="nbf-post__img">
-								<a href="<?php the_permalink(); ?>" class="pagelink" title="<?php the_title(); ?>">
-									<?php the_post_thumbnail(); ?>
-								</a>
-							</div>
-							<div class="nbf-post__content">
-								<p class="nbf-post__date">
-									<?php echo get_the_date(); ?>
-								</p>
-								<h3 class="nbf-post__title">
-									<?php the_title(); ?>
-								</h3>
-								<div class="nbf-post__excerpt">
-									<?php the_excerpt(); ?>
-								</div>
-								<p class="nbf-post__more">
-									<a href="<?php the_permalink(); ?>" class="btn btn--black pagelink" title="<?php the_title(); ?>">
-										<?php _e('En savoir plus', 'nabi'); ?>
-									</a>
-								</p>
-							</div>
+					<div class="nbf-post__brick">
+						<div class="nbf-post__img">
+							<a href="<?php the_permalink(); ?>" class="pagelink" title="<?php the_title(); ?>">
+								<?php the_post_thumbnail(); ?>
+							</a>
 						</div>
-
+						<div class="nbf-post__content">
+							<p class="nbf-post__date">
+								<?php echo get_the_date(); ?>
+							</p>
+							<h3 class="nbf-post__title">
+								<?php the_title(); ?>
+							</h3>
+							<div class="nbf-post__excerpt">
+								<?php the_excerpt(); ?>
+							</div>
+							<p class="nbf-post__more">
+								<a href="<?php the_permalink(); ?>" class="btn btn--black pagelink" title="<?php the_title(); ?>">
+									<?php _e('En savoir plus', 'nabi'); ?>
+								</a>
+							</p>
+						</div>
+					</div>
 
                 <?php endwhile; else:
 	                echo '<div class="nbf-post__brick">';
@@ -164,42 +162,42 @@ class NabiFilter_elements{
             }
 
         if(in_array("bottom",$paginationDisplay))
-        $this->pageination($ajaxPostfilter->found_posts, $postPerPage);
+        $this->pagination($ajaxPostfilter->found_posts, $postPerPage);
         echo "<p>Total : {$ajaxPostfilter->found_posts}</p>";
 
         if($_POST)
             die();
     }
 
-    function pageination($totalPosts,$postPerPage){?>
-                <nav class="pagination">
-                <?php if($_POST && $_POST['paged']>1){
-                	$pageNumber = $_POST['paged']; ?>
-                    <div class="prevPage"><a class="paginationNav" rel="prev" href="#"><?php _e('précédente', 'nabi'); ?></a></div>
-                <?php } else {
-					$pageNumber = 1; ?>
-					<div class="prevPageDisabled"><a class="paginationDisabled"><?php _e('précédente', 'nabi'); ?></a></div>
-                <?php }?>
-                <div class="af-pages">
-                    <?php
-                    $p = 1;
-                    while($p<=ceil($totalPosts/$postPerPage)){
-                    	echo '<a class="nb-paginatelink-'.$p.' nb-paginatelink';
-                        if($p == $pageNumber || (!$_POST && $p == 1))
-                        	echo "current";
-                        echo '" rel="'.$p.'">'.$p.'</a>';
-                        if($p <= ceil($totalPosts/$postPerPage-1))
-                            echo "";
-                        $p++;
-                    }
-                    ?>
-                </div>
-                <?php if($postPerPage*$pageNumber<$totalPosts && $postPerPage<$totalPosts){ ?>
-                    <div class="nextPage"><a class="paginationNav" rel="next" href="#"><?php _e('suivante', 'nabi'); ?></a></div>
-                <?php } else { ?>
-	                <div class="nextPageDisabled"><a class="paginationDisabled" ><?php _e('suivante', 'nabi'); ?></a></div>
-                <?php }?>
-            </nav>
+    function pagination($totalPosts,$postPerPage){?>
+        <nav class="pagination">
+            <?php if($_POST && $_POST['paged']>1){
+            	$pageNumber = $_POST['paged']; ?>
+                <div class="prevPage"><a class="paginationNav" rel="prev" href="#"><?php _e('précédente', 'nabi'); ?></a></div>
+            <?php } else {
+				$pageNumber = 1; ?>
+				<div class="prevPageDisabled"><a class="paginationDisabled"><?php _e('précédente', 'nabi'); ?></a></div>
+            <?php }?>
+            <div class="af-pages">
+                <?php
+                $p = 1;
+                while($p<=ceil($totalPosts/$postPerPage)){
+                	echo '<a class="nb-paginatelink-'.$p.' nb-paginatelink';
+                    if($p == $pageNumber || (!$_POST && $p == 1))
+                    	echo "current";
+                    echo '" rel="'.$p.'">'.$p.'</a>';
+                    if($p <= ceil($totalPosts/$postPerPage-1))
+                        echo "";
+                    $p++;
+                }
+                ?>
+            </div>
+            <?php if($postPerPage*$pageNumber<$totalPosts && $postPerPage<$totalPosts){ ?>
+                <div class="nextPage"><a class="paginationNav" rel="next" href="#"><?php _e('suivante', 'nabi'); ?></a></div>
+            <?php } else { ?>
+                <div class="nextPageDisabled"><a class="paginationDisabled" ><?php _e('suivante', 'nabi'); ?></a></div>
+            <?php }?>
+        </nav>
     <?php }
 
     function create_filter_nav($taxs = array('category'), $posttypes= array('post'), $showCount = 1, $showTitles = 1){?>

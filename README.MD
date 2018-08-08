@@ -13,12 +13,12 @@ Attributes for this shortcode include:
 * ```posttypes``` - Comma separated post types that you want to display. Default is “post”.
 * ```taxonomies``` - Comma separated taxonomies that you want to be able to filter by. Default is none.
 * ```showcount``` - Set to 0 to show post count. Set to 1 hide post count. Default is 0.
-* ```pageination``` - Accepts values "top,bottom", "top", "bottom" depend where you want your pagination. Default is top,bottom.
+* ```pagination``` - Accepts values "top,bottom", "top", "bottom" depend where you want your pagination. Default is top,bottom.
 * ```posts_per_page``` - Set the amount of posts per page. Default is 8.
 * ```shownav``` - Set to 0 to show navigation. Set to 1 hide the navigation. Default is 0.
 
 **Example:**
-```[NabiFilter posttypes="test_album" taxonomies="category,tag,genre,writer" showcount="1"]```
+```[NabiFilter posttypes="portfolio" taxonomies="type" posts_per_page="6"]```
 
 
 ## Installation
